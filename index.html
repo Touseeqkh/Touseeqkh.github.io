@@ -1,0 +1,471 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Touseeq Danish | Data Engineer</title>
+    <style>
+        :root {
+            --bg: #0b0f19;
+            --card-bg: #131c2e;
+            --text-main: #f8fafc;
+            --text-muted: #94a3b8;
+            --accent: #38bdf8;
+            --accent-gradient: linear-gradient(135deg, #38bdf8 0%, #818cf8 100%);
+            --border: #1e293b;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            background-color: var(--bg);
+            color: var(--text-main);
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+            line-height: 1.6;
+            padding: 40px 20px;
+        }
+
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+
+        /* Header / Hero Section */
+        header {
+            background: var(--card-bg);
+            border: 1px solid var(--border);
+            border-radius: 16px;
+            padding: 40px;
+            display: flex;
+            align-items: center;
+            gap: 32px;
+            margin-bottom: 32px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        header::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 4px;
+            background: var(--accent-gradient);
+        }
+
+        .profile-img {
+            width: 140px;
+            height: 140px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 3px solid #1e293b;
+            box-shadow: 0 0 20px rgba(56, 189, 248, 0.15);
+        }
+
+        .header-content h1 {
+            font-size: 2.5rem;
+            font-weight: 800;
+            letter-spacing: -0.025em;
+            margin-bottom: 4px;
+            background: var(--accent-gradient);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .tagline {
+            font-size: 1.2rem;
+            color: var(--accent);
+            font-weight: 600;
+            margin-bottom: 16px;
+        }
+
+        .contact-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+            gap: 12px;
+            font-size: 0.9rem;
+            color: var(--text-muted);
+        }
+
+        .contact-grid a {
+            color: var(--text-main);
+            text-decoration: none;
+            transition: color 0.2s;
+        }
+
+        .contact-grid a:hover {
+            color: var(--accent);
+        }
+
+        /* Sections Layout */
+        section {
+            margin-bottom: 40px;
+        }
+
+        h2 {
+            font-size: 1.5rem;
+            font-weight: 700;
+            margin-bottom: 20px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            color: var(--text-main);
+        }
+
+        h2::after {
+            content: '';
+            flex-grow: 1;
+            height: 1px;
+            background: var(--border);
+        }
+
+        .summary-card {
+            background: var(--card-bg);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            padding: 24px;
+            font-size: 1.05rem;
+            color: var(--text-muted);
+        }
+
+        /* Experience & Education Timelines */
+        .card-stack {
+            display: flex;
+            flex-direction: column;
+            gap: 16px;
+        }
+
+        .item-card {
+            background: var(--card-bg);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            padding: 24px;
+            transition: transform 0.2s, border-color 0.2s;
+        }
+
+        .item-card:hover {
+            transform: translateY(-2px);
+            border-color: #334155;
+        }
+
+        .item-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            flex-wrap: wrap;
+            gap: 8px;
+            margin-bottom: 12px;
+        }
+
+        .item-title {
+            font-size: 1.2rem;
+            font-weight: 700;
+            color: var(--text-main);
+        }
+
+        .item-meta {
+            font-size: 0.95rem;
+            color: var(--accent);
+            font-weight: 500;
+        }
+
+        .item-date {
+            font-size: 0.85rem;
+            color: var(--text-muted);
+            background: #1e293b;
+            padding: 4px 10px;
+            border-radius: 20px;
+        }
+
+        ul {
+            list-style: none;
+        }
+
+        li {
+            position: relative;
+            padding-left: 20px;
+            margin-bottom: 8px;
+            color: var(--text-muted);
+            font-size: 0.95rem;
+        }
+
+        li::before {
+            content: "→";
+            position: absolute;
+            left: 0;
+            color: var(--accent);
+        }
+
+        /* Modern Skills Grid */
+        .skills-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 16px;
+        }
+
+        .skill-box {
+            background: var(--card-bg);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            padding: 20px;
+        }
+
+        .skill-box h3 {
+            font-size: 0.95rem;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            color: var(--accent);
+            margin-bottom: 10px;
+        }
+
+        .skill-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+        }
+
+        .tag {
+            background: #1e293b;
+            color: var(--text-main);
+            padding: 6px 12px;
+            border-radius: 6px;
+            font-size: 0.85rem;
+            border: 1px solid transparent;
+        }
+
+        .tag:hover {
+            border-color: var(--accent);
+        }
+
+        /* Modern References Grid */
+        .ref-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 16px;
+        }
+
+        .ref-card {
+            background: var(--card-bg);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            padding: 20px;
+            font-size: 0.9rem;
+        }
+
+        .ref-card strong {
+            color: var(--text-main);
+            font-size: 1rem;
+            display: block;
+            margin-bottom: 4px;
+        }
+
+        .ref-card em {
+            color: var(--text-muted);
+            font-style: normal;
+            display: block;
+            margin-bottom: 8px;
+        }
+
+        .ref-card a {
+            color: var(--accent);
+            text-decoration: none;
+        }
+
+        @media (max-width: 768px) {
+            header { flex-direction: column; text-align: center; padding: 30px 20px; }
+            .contact-grid { justify-content: center; text-align: center; }
+            .item-header { flex-direction: column; gap: 4px; }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+
+        <!-- Hero Header Card -->
+        <header>
+            <img src="profile.jpg" alt="Touseeq Danish" class="profile-img">
+            <div class="header-content">
+                <h1>Touseeq Danish</h1>
+                <div class="tagline">Data Engineer</div>
+                <div class="contact-grid">
+                    <div>📧 <a href="mailto:touseeqbalouch@gmail.com">touseeqbalouch@gmail.com</a></div>
+                    <div>📞 (+33) 749 523 670</div>
+                    <div>📍 Lyon, France (Student Visa)</div>
+                    <div>🔗 <a href="https://linkedin.com/in/touseeq-danish" target="_blank">LinkedIn</a></div>
+                    <div>💻 <a href="https://github.com/Touseeqkh" target="_blank">GitHub</a></div>
+                </div>
+            </div>
+        </header>
+
+        <!-- Professional Summary -->
+        <section>
+            <h2>Summary</h2>
+            <div class="summary-card">
+                Computer Science Engineer with 2+ years of experience in data engineering, pipeline development, and cloud infrastructure[cite: 1]. Completed an M2 in Data & Intelligence for Smart Systems at Université Claude Bernard Lyon 1, with hands-on research at CNRS[cite: 1]. Proficient in building scalable ETL/ELT pipelines, managing SQL/NoSQL databases, and deploying containerised solutions on AWS and GCP[cite: 1].
+            </div>
+        </section>
+
+        <!-- Work Experience -->
+        <section>
+            <h2>Work Experience</h2>
+            <div class="card-stack">
+                
+                <div class="item-card">
+                    <div class="item-header">
+                        <div>
+                            <div class="item-title">Data Engineering Intern</div>
+                            <div class="item-meta">UERJ & CNRS</div>
+                        </div>
+                        <div class="item-date">Apr 2025 - Sep 2025 | Remote</div>
+                    </div>
+                    <ul>
+                        <li>Built and analyzed graph-based datasets for large-scale academic research (CNRS collaboration)[cite: 1].</li>
+                        <li>Designed and implemented ETL/ELT pipelines using Python and PySpark, improving data consistency by 30%[cite: 1].</li>
+                        <li>Deployed Docker pipelines on Linux with Git-based CI/CD; optimized SQL/NoSQL schema design and query performance[cite: 1].</li>
+                        <li>Ensured GDPR-compliant data governance; produced analytics reports using Power BI, DBT, and Dagster[cite: 1].</li>
+                    </ul>
+                </div>
+
+                <div class="item-card">
+                    <div class="item-header">
+                        <div>
+                            <div class="item-title">Data Engineer Intern — Governance & Research</div>
+                            <div class="item-meta">LIRIS Laboratory</div>
+                        </div>
+                        <div class="item-date">Feb 2025 - Mar 2025 | Lyon, France</div>
+                    </div>
+                    <ul>
+                        <li>Implemented GDPR, ISO 27001, and NIST governance frameworks for structured and unstructured research data[cite: 1].</li>
+                        <li>Designed data pipelines and managed infrastructure using Python, SQL, Docker, Kubernetes, and AWS[cite: 1].</li>
+                    </ul>
+                </div>
+
+                <div class="item-card">
+                    <div class="item-header">
+                        <div>
+                            <div class="item-title">Data Engineer</div>
+                            <div class="item-meta">NA Developers</div>
+                        </div>
+                        <div class="item-date">Jul 2023 - Jul 2024 | Remote (US)</div>
+                    </div>
+                    <ul>
+                        <li>Built scalable pipelines using Apache Spark, Kafka, and ETL workflows; designed real-time user tracking on GCP[cite: 1].</li>
+                        <li>Applied TensorFlow, Keras, and PyTorch for retention models; built RESTful APIs for system interoperability[cite: 1].</li>
+                        <li>Delivered impact: 120,000+ customer growth and €2M revenue increase through data-driven solutions[cite: 1].</li>
+                    </ul>
+                </div>
+
+            </div>
+        </section>
+
+        <!-- Technical Skills Section -->
+        <section>
+            <h2>Technical Stack</h2>
+            <div class="skills-grid">
+                <div class="skill-box">
+                    <h3>Languages</h3>
+                    <div class="skill-tags">
+                        <span class="tag">Python</span><span class="tag">Java</span><span class="tag">JavaScript</span><span class="tag">SQL</span>
+                    </div>
+                </div>
+                <div class="skill-box">
+                    <h3>Big Data & Frameworks</h3>
+                    <div class="skill-tags">
+                        <span class="tag">Apache Spark</span><span class="tag">PySpark</span><span class="tag">Kafka</span><span class="tag">Hadoop</span><span class="tag">Node.js</span><span class="tag">React</span>
+                    </div>
+                </div>
+                <div class="skill-box">
+                    <h3>Databases</h3>
+                    <div class="skill-tags">
+                        <span class="tag">PostgreSQL</span><span class="tag">MySQL</span><span class="tag">MongoDB</span><span class="tag">Neo4j</span>
+                    </div>
+                </div>
+                <div class="skill-box">
+                    <h3>Cloud & DevOps</h3>
+                    <div class="skill-tags">
+                        <span class="tag">GCP</span><span class="tag">AWS</span><span class="tag">Docker</span><span class="tag">Kubernetes</span><span class="tag">Git</span>
+                    </div>
+                </div>
+                <div class="skill-box">
+                    <h3>Data Tools & ML</h3>
+                    <div class="skill-tags">
+                        <span class="tag">Power BI</span><span class="tag">DBT</span><span class="tag">Dagster</span><span class="tag">TensorFlow</span><span class="tag">PyTorch</span>
+                    </div>
+                </div>
+                <div class="skill-box">
+                    <h3>Methodologies</h3>
+                    <div class="skill-tags">
+                        <span class="tag">GDPR</span><span class="tag">ISO 27001</span><span class="tag">NIST</span><span class="tag">Agile</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Education & Certs Split Grid -->
+        <section style="display: grid; grid-template-columns: repeat(auto-fill, minmax(450px, 1fr)); gap: 32px;">
+            <div>
+                <h2>Education</h2>
+                <div class="card-stack">
+                    <div class="item-card">
+                        <div class="item-title" style="font-size:1.1rem;">M2 - Data & Intelligence for Smart Systems</div>
+                        <div class="item-meta" style="margin-bottom:4px;">Université Claude Bernard Lyon 1</div>
+                        <div class="item-date" style="display:inline-block; margin-bottom:10px;">2025 - 2026</div>
+                        <p style="font-size:0.85rem; color:var(--text-muted)">Machine Learning, Big Data, Graph Analytics, Cloud Systems[cite: 1]</p>
+                    </div>
+                    <div class="item-card">
+                        <div class="item-title" style="font-size:1.1rem;">BSc - Information Technology</div>
+                        <div class="item-meta" style="margin-bottom:4px;">PMAS-Arid Agriculture University, Pakistan</div>
+                        <div class="item-date">2018 - 2022</div>
+                    </div>
+                </div>
+            </div>
+            
+            <div>
+                <h2>Certifications & Languages</h2>
+                <div class="item-card" style="height: calc(100% - 52px);">
+                    <ul style="display:flex; flex-direction:column; gap:12px;">
+                        <li><strong>Machine Learning with Python</strong> — Coursera / IBM[cite: 1]</li>
+                        <li><strong>AWS Cloud Computing</strong> — Udemy[cite: 1]</li>
+                        <li><strong>English:</strong> Fluent (IELTS B2)[cite: 1]</li>
+                        <li><strong>French:</strong> Beginner[cite: 1]</li>
+                        <li><strong>Urdu:</strong> Native[cite: 1]</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <!-- References -->
+        <section>
+            <h2>References</h2>
+            <div class="ref-grid">
+                <div class="ref-card">
+                    <strong>Mr. Muhammad Imran</strong>
+                    <em>PhD Researcher, Dept of Computer Science</em>
+                    Aldo Moro Bari University, Italy<br>
+                    📧 <a href="mailto:muhammad.imran@uniba.it">muhammad.imran@uniba.it</a>[cite: 1]
+                </div>
+                <div class="ref-card">
+                    <strong>Genoveva Vargas Solar</strong>
+                    <em>Full-Time Researcher</em>
+                    French National Centre for Scientific Research (CNRS)<br>
+                    📧 <a href="mailto:Genoveva.Vargas@univ-lyon1.fr">Genoveva.Vargas@univ-lyon1.fr</a>[cite: 1]
+                </div>
+                <div class="ref-card">
+                    <strong>Jean-Patrick Gelas</strong>
+                    <em>Lecturer, SOC Team</em>
+                    Claude Bernard University Lyon 1<br>
+                    📧 <a href="mailto:jean-patrick.gelas@liris.cnrs.fr">jean-patrick.gelas@liris.cnrs.fr</a>[cite: 1]
+                </div>
+            </div>
+        </section>
+
+    </div>
+
+</body>
+</html>
